@@ -1,95 +1,70 @@
-
-  body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+*{
+ 
+  margin: auto; padding: 0;
+  background: #F5F8F9;
 }
-
-h1 {
+body{
   text-align: center;
-  color: #333;
+}
+h1{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-#channel-search {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  font-size: 16px;
+#channel-search{
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #000000;
+  width: 40%; height: 25px;
+  text-align: center;
+}
+ul{
+  margin-right: 0;
+  max-width: 45%;
+    display: flex;
+  flex-wrap: wrap;
 }
 
-#channel-list {
+#channel-list > li{
+    display: flex;
+  flex-wrap: wrap;
+  background-color: #ccc;
   list-style: none;
   padding: 0;
+  margin: 10px auto;
+  background-color: #4C6B6F;
+  border-radius: 15px;
+}
+#channel-list > li:hover{
+  background-color: #55FF9F;
 }
 
-#channel-list li {
-  background-color: #fff;
-  margin-bottom: 5px;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
+#channel-list li > a{
+   width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: #ccc;
+  font-size: 25px;
+  color: #000000;
+  text-decoration: none;
 }
 
-#channel-list li a {
-  margin-left: 10px;
+#video_container{
+  background-color: red;
+  max-width: 45%;
+  margin-right: 10px;
+}
+#player{
+   position: fixed;
+  top: 25%; /* Ajusta la posición vertical según tus necesidades */
+  left: 9%; /* Ajusta la posición horizontal según tus necesidades */
 }
 
-#player {
-  width: 100%;
-  height: 500px;
+footer{
+  margin-top: 100px;
+  max-width: 100 %;
+  min-height: 100px;
+  max-height: 200px;
+  background-color: #CE81C9;
 }
-
-
-
- body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    #channel-search {
-      width: 100%;
-      max-width: 400px; /* Limit the width for smaller screens */
-      padding: 10px;
-      box-sizing: border-box;
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    #channel-list {
-      list-style: none;
-      padding: 0;
-      width: 100%;
-      max-width: 600px; /* Limit the width for smaller screens */
-    }
-
-    #channel-list li {
-      background-color: #fff;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-    }
-
-    #channel-list li a {
-      margin-left: 10px;
-    }
-
-    #player {
-      width: 100%;
-      max-width: 800px; /* Limit the width for smaller screens */
-      height: 300px; /* Adjust the height as needed */
-    }
