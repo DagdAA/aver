@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <meta charset="UTF-8">
+  <title>Reproductor de IPTV</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -9,10 +10,12 @@
       margin: 0;
       padding: 0;
     }
+
     h1 {
       text-align: center;
       color: #333;
     }
+
     #channel-search {
       width: 100%;
       padding: 10px;
@@ -20,10 +23,12 @@
       margin-bottom: 10px;
       font-size: 16px;
     }
+
     #channel-list {
       list-style: none;
       padding: 0;
     }
+
     #channel-list li {
       background-color: #fff;
       margin-bottom: 5px;
@@ -32,27 +37,37 @@
       display: flex;
       align-items: center;
     }
-    #channel-list li img {
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
+
+    #channel-list li a {
+      margin-left: 10px;
     }
+
     #player {
       width: 100%;
       height: 500px;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-  <h1>PELISKAL </h1>
+  <h1>Lista de Canales IPTV</h1>
   <input type="text" id="channel-search" oninput="searchChannels()" placeholder="Buscar canales...">
   <ul id="channel-list"></ul>
   <video id="player" controls></video>
-
   <script>
-    const m3uUrl = 'aver.m3u';
+    const m3uData = `#EXTM3U
+#EXTINF:-1,Cartoon Network
+https://playout.cdn.cartoonnetwork.com.br/playout_06/playlist.m3u8
+#EXTINF:-1,Cartoon Network 2
+https://playout.cdn.cartoonnetwork.com.br/playout_02/playlist.m3u8
+#EXTINF:-1,Cartoon Network 4
+https://playout.cdn.cartoonnetwork.com.br/playout_04/playlist.m3u8
+#EXTINF:-1,Cartoon Network 8
+https://playout.cdn.cartoonnetwork.com.br/playout_08/playlist.m3u8`;
+
     const channelList = document.getElementById('channel-list');
     let hls = null;
+    const player = videojs('player');
 
     function playChannel(url) {
       if (hls) {
@@ -66,24 +81,18 @@
       });
     }
 
-    fetch(m3uUrl)
-      .then(response => response.text())
-      .then(data => {
-        const lines = data.split('\n');
-        lines.forEach(line => {
-          if (line.startsWith('#EXTINF')) {
-            const channelName = line.split(',')[1];
-            const channelUrl = lines[lines.indexOf(line) + 1];
-            const channelImage = line.match(/tvg-logo="([^"]*)"/);
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `
-              <img src="${channelImage ? channelImage[1] : ''}">
-              <a href="#" onclick="playChannel('${channelUrl}')">${channelName}</a>
-            `;
-            channelList.appendChild(listItem);
-          }
-        });
-      });
+    const lines = m3uData.split('\n');
+    lines.forEach((line, index) => {
+      if (line.startsWith('#EXTINF')) {
+        const channelName = line.split(',')[1];
+        const channelUrl = lines[index + 1];
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+          <a href="#" onclick="playChannel('${channelUrl}')">${channelName}</a>
+        `;
+        channelList.appendChild(listItem);
+      }
+    });
 
     function searchChannels() {
       const input = document.getElementById('channel-search').value.toLowerCase();
@@ -98,6 +107,9 @@
         }
       });
     }
+
+    // Agrega el código para cargar los canales al inicio de la página aquí
+    // ...
   </script>
 </body>
 </html>
