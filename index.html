@@ -29,53 +29,32 @@
       margin-bottom: 5px;
       padding: 10px;
       border-radius: 5px;
-      display: flex;
-      align-items: center;
     }
     #channel-list li a {
-      margin-left: 10px;
-    }
-    #player {
-      width: 100%;
-      height: 500px;
+      text-decoration: none;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <h1>PELISKAL </h1>
+  <h1>Canales de TV</h1>
   <input type="text" id="channel-search" oninput="searchChannels()" placeholder="Buscar canales...">
   <ul id="channel-list"></ul>
-  <video id="player" controls></video>
 
   <script>
     const m3uUrl = 'aver.m3u';
-    const channelList = document.getElementById('channel-list');
-    let hls = null;
-
-    function playChannel(url) {
-      if (hls) {
-        hls.destroy();
-      }
-      hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(player);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        player.play();
-      });
-    }
 
     fetch(m3uUrl)
       .then(response => response.text())
       .then(data => {
+        const channelList = document.getElementById('channel-list');
         const lines = data.split('\n');
         lines.forEach(line => {
           if (line.startsWith('#EXTINF')) {
             const channelName = line.split(',')[1];
             const channelUrl = lines[lines.indexOf(line) + 1];
             const listItem = document.createElement('li');
-            listItem.innerHTML = `
-              <a href="#" onclick="playChannel('${channelUrl}')">${channelName}</a>
-            `;
+            listItem.innerHTML = `<a href="${channelUrl}">${channelName}</a>`;
             channelList.appendChild(listItem);
           }
         });
@@ -88,7 +67,7 @@
       Array.from(items).forEach(item => {
         const channelName = item.textContent.toLowerCase();
         if (channelName.includes(input)) {
-          item.style.display = 'flex';
+          item.style.display = 'block';
         } else {
           item.style.display = 'none';
         }
