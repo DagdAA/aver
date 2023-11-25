@@ -2,63 +2,63 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link href="https://vjs.zencdn.net/7.16.0/video-js.css" rel="stylesheet" />
-<script src="https://vjs.zencdn.net/7.16.0/video.js"></script>
-
   <title>Reproductor de IPTV</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    #channel-search {
-      width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    #channel-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    #channel-list li {
-      background-color: #fff;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-    }
-
-    #channel-list li a {
-      margin-left: 10px;
-    }
-
-    #player {
-      width: 100%;
-      height: 500px;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
   <h1>Lista de Canales IPTV</h1>
   <input type="text" id="channel-search" oninput="searchChannels()" placeholder="Buscar canales...">
   <ul id="channel-list"></ul>
   <video id="player" controls></video>
-  <script>
-    const m3uData = `#EXTM3U
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</body>
+</html>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#channel-search {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#channel-list {
+  list-style: none;
+  padding: 0;
+}
+
+#channel-list li {
+  background-color: #fff;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+#channel-list li a {
+  margin-left: 10px;
+}
+
+#player {
+  width: 100%;
+  height: 500px;
+}
+
+</style>
+<script>
+  const m3uData = `#EXTM3U
 #EXTINF:-1,Cartoon Network
 https://playout.cdn.cartoonnetwork.com.br/playout_06/playlist.m3u8
 #EXTINF:-1,Cartoon Network 2
@@ -68,51 +68,47 @@ https://playout.cdn.cartoonnetwork.com.br/playout_04/playlist.m3u8
 #EXTINF:-1,Cartoon Network 8
 https://playout.cdn.cartoonnetwork.com.br/playout_08/playlist.m3u8`;
 
-    const channelList = document.getElementById('channel-list');
-    let hls = null;
-    const player = videojs('player');
+const channelList = document.getElementById('channel-list');
+let hls = null;
+const player = document.getElementById('player');
 
-    function playChannel(url) {
-      if (hls) {
-        hls.destroy();
-      }
-      hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(player);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        player.play();
-      });
+function playChannel(url) {
+  if (hls) {
+    hls.destroy();
+  }
+  hls = new Hls();
+  hls.loadSource(url);
+  hls.attachMedia(player);
+  hls.on(Hls.Events.MANIFEST_PARSED, () => {
+    player.play();
+  });
+}
+
+const lines = m3uData.split('\n');
+lines.forEach((line, index) => {
+  if (line.startsWith('#EXTINF')) {
+    const channelName = line.split(',')[1];
+    const channelUrl = lines[index + 1];
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <a href="#" onclick="playChannel('${channelUrl}')">${channelName}</a>
+    `;
+    channelList.appendChild(listItem);
+  }
+});
+
+function searchChannels() {
+  const input = document.getElementById('channel-search').value.toLowerCase();
+  const list = document.getElementById('channel-list');
+  const items = list.getElementsByTagName('li');
+  Array.from(items).forEach(item => {
+    const channelName = item.textContent.toLowerCase();
+    if (channelName.includes(input)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
     }
+  });
+}
 
-    const lines = m3uData.split('\n');
-    lines.forEach((line, index) => {
-      if (line.startsWith('#EXTINF')) {
-        const channelName = line.split(',')[1];
-        const channelUrl = lines[index + 1];
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-          <a href="#" onclick="playChannel('${channelUrl}')">${channelName}</a>
-        `;
-        channelList.appendChild(listItem);
-      }
-    });
-
-    function searchChannels() {
-      const input = document.getElementById('channel-search').value.toLowerCase();
-      const list = document.getElementById('channel-list');
-      const items = list.getElementsByTagName('li');
-      Array.from(items).forEach(item => {
-        const channelName = item.textContent.toLowerCase();
-        if (channelName.includes(input)) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    // Agrega el código para cargar los canales al inicio de la página aquí
-    // ...
-  </script>
-</body>
-</html>
+</script>
