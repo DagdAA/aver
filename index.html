@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="stilos.css">
-  <link rel="stylesheet" type="text/javascript" href="script.js">
-  <title>Peliskal</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/javascript" href="script.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PELISKAL</title>
 </head>
 <body>
-  <h1>Lista de Canales ARG</h1>
-  <input type="text" id="channel-search" oninput="searchChannels()" placeholder="Buscar canales...">
-  <ul id="channel-list"></ul>
-  
-  <div id="video_container"><video id="player" controls width="720" height="480"></video></div>
+	<header>PELISKAL</header>
+	<input type="text" id="channel-search" oninput="searchChannels()" placeholder="Buscar canales...">
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="script.js"></script>
+  	<ul id="channel-list"></ul>
+
+	 <div id="video_container"><video id="player" controls width="720" height="480"></video></div>
+
 </body>
-<footer>El final</footer>
+ <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="script.js"></script>
+<footer></footer>
 </html>
