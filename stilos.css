@@ -67,5 +67,5 @@ footer{
   max-width: 100 %;
   min-height: 100px;
   max-height: 200px;
-  background-color: #CE81C9;
+  background: linear-gradient(to right, #8A2BE2, #FF69B4);
 }
