@@ -16,6 +16,7 @@ h1{
   margin-top: 20px;
   margin-bottom: 20px;
   border-bottom: 2px solid #000000;
+ background: linear-gradient(to bottom, red, blue);
   width: 40%; height: 25px;
   text-align: center;
 }
