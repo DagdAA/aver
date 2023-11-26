@@ -1,9 +1,8 @@
-
-  const m3uData = `#EXTM3U
-#EXTINF:-1, cartoonnetwork 1
-https://playout.cdn.cartoon network.com.br/playout_06/playlist.m3u8
+const m3uData = `#EXTM3U
+#EXTINF:-1, cartoon network 1
+https://playout.cdn.cartoonnetwork.com.br/playout_06/playlist.m3u8
 #EXTINF:-1, cartoon network 2
-https://playout.cdn.cartoon network.com.br/playout_02/playlist.m3u8
+https://playout.cdn.cartoonnetwork.com.br/playout_02/playlist.m3u8
 #EXTINF:-1, cartoon network kids
 https://playout.cdn.cartoonnetwork.com.br/playout_04/playlist.m3u8
 #EXTINF:-1, cartoonito
@@ -94,8 +93,10 @@ https://cdn2.streamgato.us/telemax/telemax/playlist.m3u8
 https://6362ca6f1fc28.streamlock.net/8062/8062/playlist.m3u8
 #EXTINF:-1, Sports Max 
 http://vcpar.myplaytv.com/esportsmax/live/playlist.m3u8
-#EXTINF:-1,
-#EXTINF:-1,
+#EXTINF:-1, Litus
+http://192.99.38.174:1935/litustv/ngrp:litustv_all/playlist.m3u8
+#EXTINF:-1, Televisión Rionegrina
+http://panel.dattalive.com:1935/8204/8204/playlist.m3u8
 `;
 
 
@@ -141,3 +142,5 @@ function searchChannels() {
     }
   });
 }
+
+
