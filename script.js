@@ -1,4 +1,5 @@
-const m3uData = `#EXTM3U
+
+  const m3uData = `#EXTM3U
 #EXTINF:-1, cartoon network 1
 https://playout.cdn.cartoonnetwork.com.br/playout_06/playlist.m3u8
 #EXTINF:-1, cartoon network 2
@@ -142,5 +143,3 @@ function searchChannels() {
     }
   });
 }
-
-
