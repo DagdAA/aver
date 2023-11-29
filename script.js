@@ -93,7 +93,7 @@ https://cdn2.streamgato.us/telemax/telemax/playlist.m3u8
 #EXTINF:-1, Latino Kids
 https://6362ca6f1fc28.streamlock.net/8062/8062/playlist.m3u8
 #EXTINF:-1, Sports Max 
-https://vcpar.myplaytv.com/esportsmax/live/playlist.m3u8
+http://vcpar.myplaytv.com/esportsmax/live/playlist.m3u8
 #EXTINF:-1, Litus
 https://192.99.38.174:1935/litustv/ngrp:litustv_all/playlist.m3u8
 #EXTINF:-1, Televisión Rionegrina
