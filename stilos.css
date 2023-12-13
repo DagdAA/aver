@@ -1,3 +1,4 @@
+
 *{
 	margin: 0; padding: 0;
 	box-sizing: border-box;
@@ -103,72 +104,11 @@ width: 98%; height: auto;
 
 
 
-
-
-
-
-
-
-
-
-@media screen and (max-width: 768px) {
-	#channel-search{
-  width: 80%; height: 25px;
-}
-ul{
-  margin:auto;
-  min-width: 83%;
-}
-#channel-list{
-	margin: auto;
-	width: 100%;
-}
-#channel-list li{
-	border: 2px solid #ffffff;
-	margin: 9px auto;
-	max-width: auto;
-}
-#video_container{
-	margin:5px auto;
-	max-width: 90%;
-}
-#player{
-	max-width: 340px; max-height: 250px;
-}
-
-footer{
-	margin-top: 500px;
-	min-height: 500px;
-}
-#texto{
-	min-width: 95%;
-	text-align: justify;
-	padding-bottom: 20px;
-}
-#oll{
-	margin-left: -10px;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 footer{
 	font-size: 20px;
 	padding-top: 50px;
 	color: #ffffff;
-	margin-top: 300px;
+	margin-top: 0px;
 	height: 300px;
 	background: #364649;
 	width: 100%;
@@ -193,3 +133,83 @@ footer > ul{
 	margin: 40px auto;
 	width: 90%;
 }
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) { /*CELULAR */
+	#channel-search{
+  width: 80%; height: 25px;
+}
+ul{
+  margin:auto;
+  min-width: 83%;
+}
+#contiene{
+	margin-top: 0;
+}
+#channel-list{
+	margin: auto;
+	width: 100%;
+}
+#channel-list li{
+	border: 2px solid #ffffff;
+	margin: 9px auto;
+	max-width: auto;
+}
+#video_container{
+	margin:0px auto;
+	max-width: 90%;
+}
+#player{
+	max-width: 340px; max-height: 250px;
+}
+
+footer{
+	margin-top: 10px;
+	min-height: 500px;
+}
+#texto{
+	min-width: 95%;
+	text-align: justify;
+	padding-bottom: 20px;
+}
+#oll{
+	margin-left: -10px;
+}
+}
+
+
+@media screen and (max-width: 1280px) { /*tv */
+
+#video_container{
+	margin-left: 600px;
+}
+#player{
+	max-width: 620px;
+	background-color: none;
+}
+#contiene{
+	margin-top: 0px;
+}
+footer{
+	margin-top: 0px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
