@@ -140,7 +140,7 @@ footer > ul{
 
 
 
-@media screen and (max-width: 768px) { /*CELULAR */
+@media screen and (min-width: 300px) and (max-width: 768px) { /*CELULAR */
 	#channel-search{
   width: 80%; height: 25px;
 }
@@ -185,7 +185,7 @@ footer{
 }
 
 
-@media screen and (min-width: 1280px) { /*tv */
+@media screen and (min-width: 1000px) and (max-width: 1280px) { /*tv */
 
 #video_container{
 	margin-left: 600px;
@@ -201,4 +201,3 @@ footer{
 }
 
 }
-
